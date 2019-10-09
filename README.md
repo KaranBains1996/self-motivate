@@ -1,5 +1,7 @@
 # Quotesapp
 
+Web app which shows and allows sharing of the most inspiring expressions of mankind.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.6.
 
 ## Development server
