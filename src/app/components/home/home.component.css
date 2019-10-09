@@ -1,0 +1,11 @@
+.quote-text {
+  font-size: 32px;
+  font-style: italic;
+  margin-top: 50px;
+  text-align: left;
+}
+
+.quote-author {
+  font-size: 20px;
+  text-align: right;
+}

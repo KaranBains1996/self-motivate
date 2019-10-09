@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col-8 offset-2">
+      <div class="quote-block" *ngIf="quote">
+        <div class="quote-text">
+          "{{ quote.quoteText }}"
+        </div>
+        <div class="quote-author">
+          - {{ quote.quoteAuthor }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <button (click)="getQuote()">Refresh</button>
+</div>
+
+<ngx-spinner></ngx-spinner>
