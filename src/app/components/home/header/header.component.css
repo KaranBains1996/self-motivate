@@ -46,6 +46,7 @@ nav {
   width: 25px;
   height: 3px;
   margin: 5px;
+  transition: 0.3s ease;
 }
 
 @media screen and (max-width: 768px) {
@@ -85,4 +86,16 @@ nav {
   to {
     opacity: 1;
   }
+}
+
+.burger-active .line1 {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.burger-active .line2 {
+  opacity: 0;
+}
+
+.burger-active .line3 {
+  transform: rotate(45deg) translate(-5px, -6px);
 }
