@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row">
+  <div class="row" id="quote-ctn">
     <div class="col-8 offset-2">
       <div class="quote-block" *ngIf="quote">
         <div class="quote-text">
@@ -11,7 +11,7 @@
       </div>
     </div>
   </div>
-  <button (click)="getQuote()">Refresh</button>
+  <button (click)="animateOut({callback: fetchQuote})">Refresh</button>
 </div>
 
 <ngx-spinner></ngx-spinner>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NgxSpinnerService } from 'ngx-spinner';
+import { TimelineMax } from 'gsap/all';
+import { Power2 } from 'gsap';
 
 import { QuotesService } from '../../services/quotes.service';
 import { Quote } from '../../models/quote';
@@ -12,30 +13,64 @@ import { Quote } from '../../models/quote';
 export class HomeComponent implements OnInit {
   quote: Quote;
 
-  constructor(private qSvc: QuotesService, private spinner: NgxSpinnerService) { }
+  constructor(private qSvc: QuotesService) { }
 
   ngOnInit() {
-    this.getQuote();
+    this.animateOut({callback: this.fetchQuote});
   }
 
-  getQuote() {
-    this.spinner.show();
-    this.qSvc.getQuote().subscribe(
-      res => {
-        this.quote = res;
-        this.quote.quoteText = this.quote.quoteText.trim();
-        this.spinner.hide();
+  fetchQuote(ctx) {
+    ctx.qSvc.getQuote().subscribe(
+      (res: Quote) => {
+        ctx.quote = res;
+        if (ctx.quote.quoteAuthor === '') {
+          ctx.quote.quoteAuthor = 'Anonymous';
+        }
+        ctx.quote.quoteText = ctx.quote.quoteText.trim();
+        ctx.animateIn();
       },
-      err => {
+      (err: any) => {
         const errStr = err.error.text;
         const parsedStr = errStr.replace(/\\/g, '');
-        console.log(errStr);
-        console.log(parsedStr);
-        this.quote = JSON.parse(parsedStr);
-        this.spinner.hide();
-        // this.getQuote();
+        ctx.quote = JSON.parse(parsedStr);
+        if (ctx.quote.quoteAuthor === '') {
+          ctx.quote.quoteAuthor = 'Anonymous';
+        }
+        ctx.animateIn();
       }
     );
   }
 
+  animateIn() {
+    console.log('in');
+    const qCtn = document.querySelector('#quote-ctn');
+    const t1 = new TimelineMax();
+    t1.fromTo(
+      qCtn,
+      1,
+      { x: '-100%' },
+      { x: '10%', ease: Power2.easeInOut }
+    )
+    .to(
+      qCtn,
+      0.25,
+      { x: '0%', ease: Power2.easeInOut }
+    );
+  }
+
+  animateOut(args: any) {
+    const ctx = this;
+    const qCtn = document.querySelector('#quote-ctn');
+    const t1 = new TimelineMax();
+    t1.fromTo(
+      qCtn,
+      1,
+      { x: '0%' },
+      { x: '100%', ease: Power2.easeInOut }
+    ).call(() => {
+      if (args.hasOwnProperty('callback')) {
+        args.callback(ctx);
+      }
+    });
+  }
 }
