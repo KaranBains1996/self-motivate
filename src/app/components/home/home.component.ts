@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
   constructor(private qSvc: QuotesService) { }
 
   ngOnInit() {
-    this.animateOut({callback: this.fetchQuote});
+    this.fetchQuote(this);
   }
 
   fetchQuote(ctx) {
@@ -42,7 +42,6 @@ export class HomeComponent implements OnInit {
   }
 
   animateIn() {
-    console.log('in');
     const qCtn = document.querySelector('#quote-ctn');
     const t1 = new TimelineMax();
     t1.fromTo(
