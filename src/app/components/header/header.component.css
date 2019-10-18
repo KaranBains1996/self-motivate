@@ -3,7 +3,7 @@ nav {
   justify-content: space-around;
   align-items: center;
   min-height: 8vh;
-  background: darkblue;
+  background-color: #1F1F1F;
 }
 
 .logo {
@@ -55,12 +55,12 @@ nav {
   }
 
   .nav-links {
+    background-color: #1F1F1F;
     position: absolute;
     top: 8vh;
     height: 92vh;
     right: 0px;
     width: 50%;
-    background-color: darkblue;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
