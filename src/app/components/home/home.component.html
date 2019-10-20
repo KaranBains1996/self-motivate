@@ -3,7 +3,7 @@
   <div class="row" id="quote-ctn">
     <div class="col-8 offset-2">
       <div class="quote-block" *ngIf="quote">
-        <div class="quote-text">
+        <div class="quote-text pointer" (click)="copyQuote()">
           "{{ quote.quoteText }}"
         </div>
         <div class="quote-author">
@@ -13,6 +13,12 @@
     </div>
   </div>
   <div class="btn-ctn">
+    <div class="sbuttons" (click)="toggleShareMenu()">
+      <a href="#" target="_blank" class="sbutton fb" tooltip="Facebook"><fa-icon [icon]="faFacebookF"></fa-icon></a>
+      <a href="#" target="_blank" class="sbutton twitt" tooltip="Twitter"><fa-icon [icon]="faTwitter"></fa-icon></a>
+      <a href="#" target="_blank" class="sbutton instagram" tooltip="Instagram"><fa-icon [icon]="faInstagram"></fa-icon></a>
+      <a target="_blank" class="sbutton mainsbutton" tooltip="Share"><img src="../../../assets/icons/_ionicons_svg_md-share.svg"></a>
+    </div>
     <button class="next-btn" (click)="animateOut({callback: fetchQuote})">
       <svg class="icon-arrow before">
         <use xlink:href="#arrow"></use>
@@ -33,4 +39,3 @@
   </div>
 </div>
 
-<ngx-spinner></ngx-spinner>
