@@ -3,6 +3,7 @@ import { TimelineMax } from 'gsap/all';
 import { Power2 } from 'gsap';
 
 import { faFacebookF, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { faShareAlt } from '@fortawesome/free-solid-svg-icons';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { QuotesService } from '../../services/quotes.service';
 import { Quote } from '../../models/quote';
@@ -17,6 +18,7 @@ export class HomeComponent implements OnInit {
   faFacebookF = faFacebookF;
   faInstagram = faInstagram;
   faTwitter = faTwitter;
+  faShareAlt = faShareAlt;
 
   constructor(private qSvc: QuotesService, private snackBar: MatSnackBar) { }
 
@@ -96,7 +98,7 @@ export class HomeComponent implements OnInit {
     document.execCommand('copy');
     document.body.removeChild(selBox);
     this.snackBar.open('Copied', 'OK', {
-      duration: 4000,
+      duration: 2000,
     });
   }
 }

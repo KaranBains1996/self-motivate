@@ -2,8 +2,8 @@
 <div class="container-fluid q-ctn">
   <div class="row" id="quote-ctn">
     <div class="col-8 offset-2">
-      <div class="quote-block" *ngIf="quote">
-        <div class="quote-text pointer" (click)="copyQuote()">
+      <div class="quote-block pointer" *ngIf="quote" (click)="copyQuote()">
+        <div class="quote-text">
           "{{ quote.quoteText }}"
         </div>
         <div class="quote-author">
@@ -17,7 +17,7 @@
       <a href="#" target="_blank" class="sbutton fb" tooltip="Facebook"><fa-icon [icon]="faFacebookF"></fa-icon></a>
       <a href="#" target="_blank" class="sbutton twitt" tooltip="Twitter"><fa-icon [icon]="faTwitter"></fa-icon></a>
       <a href="#" target="_blank" class="sbutton instagram" tooltip="Instagram"><fa-icon [icon]="faInstagram"></fa-icon></a>
-      <a target="_blank" class="sbutton mainsbutton" tooltip="Share"><img src="../../../assets/icons/_ionicons_svg_md-share.svg"></a>
+      <a target="_blank" class="sbutton mainsbutton" tooltip="Share"><fa-icon [icon]="faShareAlt"></fa-icon></a>
     </div>
     <button class="next-btn" (click)="animateOut({callback: fetchQuote})">
       <svg class="icon-arrow before">

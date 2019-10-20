@@ -174,7 +174,7 @@
   align-items: center;
   width: 60px;
   height: 60px;
-  border-radius: 40%;
+  border-radius: 60%;
   text-align: center;
   color: white;
   margin: 20px auto 0;
@@ -200,7 +200,7 @@
   height: 60px;
   margin: 20px auto 0;
   opacity: 0;
-  pointer-events: none;
+  display: none;
 }
 .sbutton:not(:last-child) > i {
   font-size: 25px;
@@ -212,7 +212,7 @@
   width: 60px;
   height: 60px;
   margin: 15px auto 0;
-  pointer-events: all;
+  display: flex;
 }
 .sbutton:nth-last-child(1) {
   -webkit-transition-delay: 25ms;
@@ -262,20 +262,26 @@
   opacity: 1;
 }
 .sbutton.mainsbutton {
-  background: #2ab1ce;
+  /* background: #2ab1ce; */
+  background: none;
+  color: white;
 }
 .sbutton.gplus {
-  background: #F44336;
+  /* background: #F44336; */
+  background: none;
 }
 .sbutton.instagram {
-  background: white;
-  color: black;
+  /* background: white; */
+  background: none;
+  color: white;
 }
 .sbutton.twitt {
-  background: #03A9F4;
+  /* background: #03A9F4; */
+  background: none;
 }
 .sbutton.fb {
-  background: #3F51B5;
+  /* background: #3F51B5; */
+  background: none;
 }
 .sbutton.whatsapp {
   background: #00e676;
