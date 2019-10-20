@@ -99,11 +99,35 @@
     opacity: 1;
     transform: translateX(0) scaleX(1);
   }
+
+  /* TOOLTIP FOR SHARE BUTTONS */
+  [tooltip]:before {
+    font-weight: 600;
+    border-radius: 2px;
+    background-color: #585858;
+    color: #fff;
+    content: attr(tooltip);
+    font-size: 12px;
+    visibility: hidden;
+    opacity: 0;
+    padding: 5px 7px;
+    margin-left: 10px;
+    position: absolute;
+    left: 100%;
+    bottom: 20%;
+    white-space: nowrap;
+  }
+
+  [tooltip]:hover:before,
+  [tooltip]:hover:after {
+    visibility: visible;
+    opacity: 1;
+  }
 }
 
 .next-btn {
   background: #121212;
-  border: 4px solid #3F3F3F;
+  border: 4px solid #3f3f3f;
   color: white;
   display: inline-block;
   font-size: 18px;
@@ -125,14 +149,15 @@
 
 .next-btn .label {
   display: inline-block;
-  transition: transform .5s cubic-bezier(0.86, 0, 0.07, 1);
+  transition: transform 0.5s cubic-bezier(0.86, 0, 0.07, 1);
 }
 
 .next-btn .icon-arrow {
   fill: white;
   height: 15px;
   top: 17px;
-  transition: transform .5s cubic-bezier(0.86, 0, 0.07, 1), opacity .4s cubic-bezier(0.86, 0, 0.07, 1);
+  transition: transform 0.5s cubic-bezier(0.86, 0, 0.07, 1),
+    opacity 0.4s cubic-bezier(0.86, 0, 0.07, 1);
   width: 35px;
 }
 
@@ -152,8 +177,6 @@
   transform-origin: right center;
 }
 
-
-
 .next-btn:active {
   border-color: white;
   color: white;
@@ -164,7 +187,7 @@
 }
 
 .next-btn:focus {
-  outline:0;
+  outline: 0;
 }
 
 /* SHARE BUTTON */
@@ -178,22 +201,23 @@
   text-align: center;
   color: white;
   margin: 20px auto 0;
-  box-shadow: 0px 5px 11px -2px rgba(0, 0, 0, 0.18), 0px 4px 12px -7px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 5px 11px -2px rgba(0, 0, 0, 0.18),
+    0px 4px 12px -7px rgba(0, 0, 0, 0.15);
   cursor: pointer;
-  -webkit-transition: all .1s ease-out;
-  transition: all .1s ease-out;
+  -webkit-transition: all 0.1s ease-out;
+  transition: all 0.1s ease-out;
   position: relative;
 }
 .sbutton > i {
   font-size: 38px;
   line-height: 60px;
-  transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
   transition-delay: 2s;
 }
 .sbutton:active,
 .sbutton:focus,
 .sbutton:hover {
-  box-shadow: 0 0 4px rgba(0, 0, 0, .14), 0 4px 8px rgba(0, 0, 0, .28);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28);
 }
 .sbutton:not(:last-child) {
   width: 60px;
@@ -205,7 +229,7 @@
 .sbutton:not(:last-child) > i {
   font-size: 25px;
   line-height: 60px;
-  transition: all .3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 .sbuttons.open .sbutton:not(:last-child) {
   opacity: 1;
@@ -239,31 +263,9 @@
   transition-delay: 100ms;
 } */
 
-[tooltip]:before {
-  font-weight: 600;
-  border-radius: 2px;
-  background-color: #585858;
-  color: #fff;
-  content: attr(tooltip);
-  font-size: 12px;
-  visibility: hidden;
-  opacity: 0;
-  padding: 5px 7px;
-  margin-left: 10px;
-  position: absolute;
-  left: 100%;
-  bottom: 20%;
-  white-space: nowrap;
-}
-
-[tooltip]:hover:before,
-[tooltip]:hover:after {
-  visibility: visible;
-  opacity: 1;
-}
 .sbutton.mainsbutton {
-  /* background: #2ab1ce; */
-  background: none;
+  /* background: #797e80; */
+  border: 4px solid #3f3f3f;
   color: white;
 }
 .sbutton.gplus {
@@ -271,20 +273,27 @@
   background: none;
 }
 .sbutton.instagram {
-  /* background: white; */
-  background: none;
-  color: white;
+  background: white;
+  border: none;
+  /* background: none; */
+  color: rgb(248, 161, 176);
 }
 .sbutton.twitt {
-  /* background: #03A9F4; */
-  background: none;
+  background: #03a9f4;
+  border: none;
+  /* background: none; */
 }
 .sbutton.fb {
-  /* background: #3F51B5; */
-  background: none;
+  background: #3f51b5;
+  border: none;
+  /* background: none; */
 }
 .sbutton.whatsapp {
   background: #00e676;
+}
+.sbutton.download {
+  background: rgb(85, 85, 231);
+  border: none;
 }
 
 img {

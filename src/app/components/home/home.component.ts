@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { TimelineMax } from 'gsap/all';
 import { Power2 } from 'gsap';
-
 import { faFacebookF, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
-import { faShareAlt } from '@fortawesome/free-solid-svg-icons';
+import { faShareAlt, faDownload } from '@fortawesome/free-solid-svg-icons';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import htmlToImage from 'html-to-image';
+import { saveAs } from 'file-saver';
+
 import { QuotesService } from '../../services/quotes.service';
 import { Quote } from '../../models/quote';
 
@@ -19,6 +21,7 @@ export class HomeComponent implements OnInit {
   faInstagram = faInstagram;
   faTwitter = faTwitter;
   faShareAlt = faShareAlt;
+  faDownload = faDownload;
 
   constructor(private qSvc: QuotesService, private snackBar: MatSnackBar) { }
 
@@ -100,5 +103,15 @@ export class HomeComponent implements OnInit {
     this.snackBar.open('Copied', 'OK', {
       duration: 2000,
     });
+  }
+
+  download() {
+    htmlToImage.toJpeg(document.getElementById('quote-ctn'), { quality: 0.95 })
+      .then((dataUrl) => {
+        const link = document.createElement('a');
+        link.download = 'my-image-name.jpeg';
+        link.href = dataUrl;
+        link.click();
+      });
   }
 }
