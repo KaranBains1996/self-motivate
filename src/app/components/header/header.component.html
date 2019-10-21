@@ -4,13 +4,13 @@
   </div>
   <ul class="nav-links">
     <li>
-      <a href="#">Home</a>
+      <a [routerLink]="['/']" routerLinkActive="router-link-active" >Home</a>
     </li>
     <li>
-      <a href="#">About</a>
+      <a [routerLink]="['/about']" routerLinkActive="router-link-active" >About</a>
     </li>
     <li>
-      <a href="#">Contact</a>
+      <a [routerLink]="['/contact']" routerLinkActive="router-link-active" >Contact</a>
     </li>
   </ul>
   <div class="burger" (click)="toggleNav()">
