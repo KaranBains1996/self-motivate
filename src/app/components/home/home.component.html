@@ -1,42 +1,52 @@
-
 <div class="container-fluid q-ctn">
-  <div class="row" id="quote-ctn">
-    <div class="col-8 offset-2">
-      <div class="quote-block pointer" *ngIf="quote" (click)="copyQuote()" id="test">
-        <div class="quote-text">
-          "{{ quote.quoteText }}"
-        </div>
-        <div class="quote-author">
-          - {{ quote.quoteAuthor }}
+  <div class="content">
+    <div class="row" id="quote-ctn">
+      <div class="col-8 offset-2">
+        <div class="quote-block pointer" *ngIf="quote" (click)="copyQuote()" id="test">
+          <div class="quote-text">
+            "{{ quote.quoteText }}"
+          </div>
+          <div class="quote-author">
+            - {{ quote.quoteAuthor }}
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="btn-ctn">
-    <div class="sbuttons" (click)="toggleShareMenu()">
-      <button class="sbutton fb" tooltip="Facebook"><fa-icon [icon]="faFacebookF"></fa-icon></button>
-      <button class="sbutton twitt" tooltip="Twitter"><fa-icon [icon]="faTwitter"></fa-icon></button>
-      <button class="sbutton instagram" tooltip="Instagram"><fa-icon [icon]="faInstagram"></fa-icon></button>
-      <button class="sbutton download" tooltip="Download" (click)="download()"><fa-icon [icon]="faDownload"></fa-icon></button>
-      <a target="_blank" class="sbutton mainsbutton" tooltip="Share"><fa-icon [icon]="faShareAlt"></fa-icon></a>
+    <div class="btn-ctn">
+      <div class="sbuttons" (click)="toggleShareMenu()">
+        <button class="sbutton fb" tooltip="Facebook">
+          <fa-icon [icon]="faFacebookF"></fa-icon>
+        </button>
+        <button class="sbutton twitt" tooltip="Twitter">
+          <fa-icon [icon]="faTwitter"></fa-icon>
+        </button>
+        <button class="sbutton instagram" tooltip="Instagram">
+          <fa-icon [icon]="faInstagram"></fa-icon>
+        </button>
+        <button class="sbutton download" tooltip="Download" (click)="download()">
+          <fa-icon [icon]="faDownload"></fa-icon>
+        </button>
+        <a target="_blank" class="sbutton mainsbutton" tooltip="Share">
+          <fa-icon [icon]="faShareAlt"></fa-icon>
+        </a>
+      </div>
+      <button class="next-btn" (click)="animateOut({callback: fetchQuote})">
+        <svg class="icon-arrow before">
+          <use xlink:href="#arrow"></use>
+        </svg>
+        <span class="label">Next Quote</span>
+        <svg class="icon-arrow after">
+          <use xlink:href="#arrow"></use>
+        </svg>
+      </button>
+      <svg style="display: none;">
+        <defs>
+          <symbol id="arrow" viewBox="0 0 35 15">
+            <title>Arrow</title>
+            <path d="M27.172 5L25 2.828 27.828 0 34.9 7.071l-7.07 7.071L25 11.314 27.314 9H0V5h27.172z " />
+          </symbol>
+        </defs>
+      </svg>
     </div>
-    <button class="next-btn" (click)="animateOut({callback: fetchQuote})">
-      <svg class="icon-arrow before">
-        <use xlink:href="#arrow"></use>
-      </svg>
-      <span class="label">Next Quote</span>
-      <svg class="icon-arrow after">
-        <use xlink:href="#arrow"></use>
-      </svg>
-    </button>
-    <svg style="display: none;">
-      <defs>
-        <symbol id="arrow" viewBox="0 0 35 15">
-          <title>Arrow</title>
-          <path d="M27.172 5L25 2.828 27.828 0 34.9 7.071l-7.07 7.071L25 11.314 27.314 9H0V5h27.172z " />
-        </symbol>
-      </defs>
-    </svg>
   </div>
 </div>
-
