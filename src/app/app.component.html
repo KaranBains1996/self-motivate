@@ -1,6 +1,6 @@
-<app-header></app-header>
-<div class="app-wrapper" [@routeAnimations]="prepareRoute(outlet)">
-  <router-outlet #outlet="outlet"></router-outlet>
-  <div class="transition-top"></div>
-  <div class="transition-bottom"></div>
+<div class="app-wrapper">
+  <app-header></app-header>
+  <div class="app-wrapper" [@routeAnimations]="prepareRoute(outlet)">
+    <router-outlet #outlet="outlet"></router-outlet>
+  </div>
 </div>
