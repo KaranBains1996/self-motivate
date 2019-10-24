@@ -279,6 +279,12 @@
   /* background: none; */
   color: rgb(248, 161, 176);
 }
+.sbutton.copy {
+  background: white;
+  border: none;
+  /* background: none; */
+  color: rgb(248, 161, 176);
+}
 .sbutton.twitt {
   background: #03a9f4;
   border: none;

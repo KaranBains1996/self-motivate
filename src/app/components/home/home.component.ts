@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TimelineMax } from 'gsap/all';
 import { Power2 } from 'gsap';
 import { faFacebookF, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
-import { faShareAlt, faDownload } from '@fortawesome/free-solid-svg-icons';
+import { faShareAlt, faDownload, faCopy } from '@fortawesome/free-solid-svg-icons';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import htmlToImage from 'html-to-image';
 import { saveAs } from 'file-saver';
@@ -18,7 +18,7 @@ import { Quote } from '../../models/quote';
 export class HomeComponent implements OnInit {
   quote: Quote;
   faFacebookF = faFacebookF;
-  faInstagram = faInstagram;
+  faCopy = faCopy;
   faTwitter = faTwitter;
   faShareAlt = faShareAlt;
   faDownload = faDownload;
@@ -94,7 +94,7 @@ export class HomeComponent implements OnInit {
     selBox.style.left = '0';
     selBox.style.top = '0';
     selBox.style.opacity = '0';
-    selBox.value = this.quote.quoteText;
+    selBox.value = '"' + this.quote.quoteText + '" \n- ' + this.quote.quoteAuthor;
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();
@@ -109,9 +109,17 @@ export class HomeComponent implements OnInit {
     htmlToImage.toJpeg(document.getElementById('quote-ctn'), { quality: 0.95 })
       .then((dataUrl) => {
         const link = document.createElement('a');
-        link.download = 'my-image-name.jpeg';
+        link.download = `${this.quote.quoteAuthor}.jpeg`;
         link.href = dataUrl;
         link.click();
       });
+  }
+
+  encodedQuote() {
+    if (this.quote) {
+      return encodeURI('"' + this.quote.quoteText + '" \n- ' + this.quote.quoteAuthor);
+    } else {
+      return encodeURI('Hello, World!');
+    }
   }
 }

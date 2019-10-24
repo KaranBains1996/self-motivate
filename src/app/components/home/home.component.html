@@ -2,7 +2,7 @@
   <div class="content">
     <div class="row" id="quote-ctn">
       <div class="col-8 offset-2">
-        <div class="quote-block pointer" *ngIf="quote" (click)="copyQuote()" id="test">
+        <div class="quote-block" *ngIf="quote" id="test">
           <div class="quote-text">
             "{{ quote.quoteText }}"
           </div>
@@ -17,14 +17,14 @@
         <button class="sbutton fb" tooltip="Facebook">
           <fa-icon [icon]="faFacebookF"></fa-icon>
         </button>
-        <button class="sbutton twitt" tooltip="Twitter">
+        <a class="sbutton twitt btn btn-link" [href]="'https://twitter.com/intent/tweet?text='+encodedQuote()" target="_blank">
           <fa-icon [icon]="faTwitter"></fa-icon>
-        </button>
-        <button class="sbutton instagram" tooltip="Instagram">
-          <fa-icon [icon]="faInstagram"></fa-icon>
-        </button>
+        </a>
         <button class="sbutton download" tooltip="Download" (click)="download()">
           <fa-icon [icon]="faDownload"></fa-icon>
+        </button>
+        <button class="sbutton copy" tooltip="Copy" (click)="copyQuote()">
+          <fa-icon [icon]="faCopy"></fa-icon>
         </button>
         <a target="_blank" class="sbutton mainsbutton" tooltip="Share">
           <fa-icon [icon]="faShareAlt"></fa-icon>
