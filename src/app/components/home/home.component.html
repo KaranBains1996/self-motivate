@@ -9,14 +9,12 @@
           <div class="quote-author">
             - {{ quote.quoteAuthor }}
           </div>
+          <div class="err-text" *ngIf="errText">{{ errText }}</div>
         </div>
       </div>
     </div>
     <div class="btn-ctn">
       <div class="sbuttons" (click)="toggleShareMenu()">
-        <button class="sbutton fb" tooltip="Facebook">
-          <fa-icon [icon]="faFacebookF"></fa-icon>
-        </button>
         <a class="sbutton twitt btn btn-link" [href]="'https://twitter.com/intent/tweet?text='+encodedQuote()" target="_blank">
           <fa-icon [icon]="faTwitter"></fa-icon>
         </a>
@@ -51,3 +49,5 @@
     <div class="filler"></div>
   </div>
 </div>
+
+<ngx-spinner type="pacman"></ngx-spinner>

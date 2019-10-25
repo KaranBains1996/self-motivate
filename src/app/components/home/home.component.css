@@ -22,6 +22,11 @@
   text-align: right;
 }
 
+.err-text {
+  text-align: center;
+  font-size: 24px;
+}
+
 .btn-ctn {
   display: flex;
   justify-content: space-around;
@@ -41,6 +46,9 @@
   }
   .quote-author {
     font-size: 20px;
+  }
+  .err-text {
+    font-size: 32px;
   }
   /* 1st button */
   .next-btn {

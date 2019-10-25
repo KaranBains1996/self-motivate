@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { TimelineMax } from 'gsap/all';
 import { Power2 } from 'gsap';
-import { faFacebookF, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { faFacebookF, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { faShareAlt, faDownload, faCopy } from '@fortawesome/free-solid-svg-icons';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import htmlToImage from 'html-to-image';
-import { saveAs } from 'file-saver';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 import { QuotesService } from '../../services/quotes.service';
 import { Quote } from '../../models/quote';
@@ -22,31 +22,40 @@ export class HomeComponent implements OnInit {
   faTwitter = faTwitter;
   faShareAlt = faShareAlt;
   faDownload = faDownload;
+  errText = '';
 
-  constructor(private qSvc: QuotesService, private snackBar: MatSnackBar) { }
+  constructor(private qSvc: QuotesService, private snackBar: MatSnackBar, private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
     this.fetchQuote(this);
   }
 
   fetchQuote(ctx) {
+    ctx.spinner.show();
     ctx.qSvc.getQuote().subscribe(
       (res: Quote) => {
+        console.log(res);
         ctx.quote = res;
         if (ctx.quote.quoteAuthor === '') {
           ctx.quote.quoteAuthor = 'Anonymous';
         }
         ctx.quote.quoteText = ctx.quote.quoteText.trim();
+        ctx.spinner.hide();
         ctx.animateIn();
       },
       (err: any) => {
-        const errStr = err.error.text;
-        const parsedStr = errStr.replace(/\\/g, '');
-        ctx.quote = JSON.parse(parsedStr);
-        if (ctx.quote.quoteAuthor === '') {
-          ctx.quote.quoteAuthor = 'Anonymous';
+        if (err.status === 200) {
+          const errStr = err.error.text;
+          const parsedStr = errStr.replace(/\\/g, '');
+          ctx.quote = JSON.parse(parsedStr);
+          if (ctx.quote.quoteAuthor === '') {
+            ctx.quote.quoteAuthor = 'Anonymous';
+          }
+          ctx.spinner.hide();
+          ctx.animateIn();
+        } else {
+          ctx.errText = `Something went wrong. Please check your network or try again :(`;
         }
-        ctx.animateIn();
       }
     );
   }
