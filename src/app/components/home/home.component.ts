@@ -54,7 +54,10 @@ export class HomeComponent implements OnInit {
           ctx.spinner.hide();
           ctx.animateIn();
         } else {
-          ctx.errText = `Something went wrong. Please check your network or try again :(`;
+          ctx.spinner.hide();
+          ctx.quote.quoteText = `Something went wrong. Please check your network or try again :(`;
+          ctx.quote.quoteAuthor = `App Dev`;
+          ctx.animateIn();
         }
       }
     );
