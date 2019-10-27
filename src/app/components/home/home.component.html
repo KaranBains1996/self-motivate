@@ -3,10 +3,10 @@
     <div class="row" id="quote-ctn">
       <div class="col-8 offset-2">
         <div class="quote-block" *ngIf="quote" id="test">
-          <div class="quote-text">
+          <div class="quote-text" *ngIf="quote.quoteText !== ''">
             "{{ quote.quoteText }}"
           </div>
-          <div class="quote-author">
+          <div class="quote-author" *ngIf="quote.quoteAuthor !== ''">
             - {{ quote.quoteAuthor }}
           </div>
           <div class="err-text" *ngIf="errText">{{ errText }}</div>
