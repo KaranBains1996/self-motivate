@@ -9,7 +9,7 @@ export const slideExpandAnimation =
     transition('ContactPage => HomePage', slideUp())
   ]);
 
-function slideUp() {
+export function slideUp() {
   return [
     style({ position: 'relative' }),
     query(':leave, :enter', [
@@ -40,7 +40,7 @@ function slideUp() {
   ];
 }
 
-function slideDown() {
+export function slideDown() {
   return [
     style({ position: 'relative' }),
     query(':leave, :enter', [
