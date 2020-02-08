@@ -2,6 +2,8 @@
 
 Web app which shows and allows sharing of the most inspiring expressions of mankind.
 
+Live URL: https://self-motivate-93ba7.web.app/
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.6.
 
 ## Development server
